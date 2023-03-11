@@ -1,0 +1,62 @@
+.setting {
+    display: flex;
+    width: 100%;
+
+    .settingContainer {
+        flex: 6;
+
+        .settingDiv{
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            padding: 10px;
+            margin: 20px;
+
+            .title {
+                font-size: 24px;
+                color: gray;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .link {
+                    text-decoration: none;
+                    color: white;
+                    font-size: 16px;
+                    padding: 5px 10px;
+                    font-weight: 400;
+                    border: 1px solid green;
+                    background-color: rgb(42, 145, 42);
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+        .profileDiv{
+            -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+            box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+            padding: 10px;
+            margin: 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            .title {
+                font-size: 24px;
+                color: gray;
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+            }
+
+            .profileTab {
+                padding: 0;
+                margin: 0;
+                // display: inline-block;
+                width: inherit;
+                display: table-header-group;
+            }
+        }
+    }
+
+}
