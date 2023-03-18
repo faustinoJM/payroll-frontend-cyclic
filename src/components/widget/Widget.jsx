@@ -3,21 +3,42 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';import Per
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
+import BusinessCenterOutlinedIcon from '@mui/icons-material/BusinessCenterOutlined';
+import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
+import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
+import PointOfSaleOutlinedIcon from '@mui/icons-material/PointOfSaleOutlined';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+
+const Widget = ({ type, dbData }) => {
+    const [total, setStotal] = useState(0);
+    const formatSalary = new Intl.NumberFormat("de-DE", {maximumFractionDigits: 2, minimumFractionDigits: 2})
+
+    useEffect(() => {
+        if(type === "payrolls"){
+            let income = 0
+            dbData && dbData.map(employee => {
+                income = income + employee.total_income
+                setStotal(formatSalary.format(income))
+            })
+            console.log(income)
+        } else {
+            dbData && setStotal(dbData.length)
+        }
+    }, [dbData])
 
     let data; 
-
     //temporary
     const amount = 100;
     const diff = 20;
-
+    
     switch (type) {
-        case "user":
+        case "employees":
             data = {
-                title: "USERS",
+                title: "FUNCIONARIOS",
                 isMoney: false,
-                link: "See all users",
+                link: "ver funcionarios",
                 icon: (
                     <PersonOutlineOutlinedIcon className="icon" 
                     style={{
@@ -27,13 +48,13 @@ const Widget = ({ type }) => {
                 )
             }
         break;
-        case "order":
+        case "positions":
             data = {
-                title: "ORDERS",
+                title: "CARGOS",
                 isMoney: false,
-                link: "See all orders",
+                link: "ver cargos",
                 icon: (
-                    <ShoppingCartOutlinedIcon className="icon" 
+                    <BusinessCenterOutlinedIcon className="icon" 
                     style={{
                         color: "goldenrod",
                         backgroundColor: "rgba(218, 165, 32, 0.2)"
@@ -41,13 +62,13 @@ const Widget = ({ type }) => {
                 )
             }
         break;
-        case "earning":
+        case "departments":
             data = {
-                title: "EARNING",
-                isMoney: true,
-                link: "See all earning",
+                title: "DEPARTAMENTOS",
+                isMoney: false,
+                link: "ver departamentos",
                 icon: (
-                    <MonetizationOnOutlinedIcon className="icon" 
+                    <ApartmentOutlinedIcon className="icon" 
                     style={{
                         color: "green",
                         backgroundColor: "rgba(0, 128, 0, 0.2)"
@@ -55,13 +76,13 @@ const Widget = ({ type }) => {
                 )
             }
         break;
-        case "balance":
+        case "payrolls":
             data = {
-                title: "BALANCE",
+                title: "TOTAL PAGAMENTOS",
                 isMoney: true,
-                link: "See details",
+                link: "ver folha de salario",
                 icon: (
-                    <AccountBalanceWalletOutlinedIcon className="icon" 
+                    <PointOfSaleOutlinedIcon className="icon" 
                     style={{
                         color: "purple",
                         backgroundColor: "rgba(128, 0, 128, 0.2)"
@@ -76,14 +97,14 @@ const Widget = ({ type }) => {
         <div className="widget">
             <div className="left">
                 <span className="title">{data.title}</span>
-                <span className="counter">{data.isMoney && "$"} {amount}</span>
-                <span className="link">{data.link}</span>
+                <span className="counter">{dbData && total}</span>
+                <Link to={type} className="link">{data.link}</Link>
             </div>
             <div className="right">
-                <div className="percentage positive">
+                {/* <div className="percentage positive">
                     <KeyboardArrowUpIcon />
                     {diff} %
-                </div>               
+                </div>  */}
               {data.icon}
             </div>
         </div>

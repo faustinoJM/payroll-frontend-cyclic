@@ -9,7 +9,7 @@ import Input from "../../components/input/Input"
 
 const Login = () => {
     const formRef = useRef(null);
-    const [outroErro, setOutro] = useState(null);
+    const [loginError, setLoginError] = useState(null);
 
     const navigate = useNavigate();
   
@@ -46,7 +46,7 @@ const Login = () => {
           return;
         }
         //add toast msg
-         setOutro(true)
+         setLoginError(true)
   
         // addToast({
         //   type: "error",
@@ -62,11 +62,11 @@ const Login = () => {
             <Form className="formContainer" ref={formRef} onSubmit={handleSubmit} >
                 {/* <h1>Payroll system</h1> */}
                 <div className="formInput">
-                    <Input type="text" name="email" label="Email" outroErro={outroErro} />
+                    <Input type="text" name="email" label="Email" loginError={loginError} />
                 </div>
                 <div className="formInput">
-                    <Input type="password" name="password" label="Senha" outroErro={outroErro} />
-                    {outroErro && (<div className="error">Email ou Senha incorrecta</div>)}
+                    <Input type="password" name="password" label="Senha" loginError={loginError} />
+                    {loginError && (<div className="error">Email ou Senha incorrecta</div>)}
                 </div>
                 <button type="submnit">Login</button>
             </Form>

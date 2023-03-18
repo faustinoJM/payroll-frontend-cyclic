@@ -19,7 +19,7 @@
                 li {
                     margin-right: 5px;
 
-                    a:active, a:visited, a:link{
+                    .a:active, .a:visited, .a:link{
                         // background-color: rgb(241, 241, 241);
                         border-top: 0.5px solid gray;
                         border-right: 0.5px solid gray;
@@ -31,6 +31,9 @@
                         text-decoration: none;
                         color: black;
                         padding: 5px;
+                    }
+                    .b {
+                        text-decoration: none;
                     }
                 }
 
@@ -79,6 +82,14 @@
                 font-weight: bold;
                 cursor: pointer;
                 border-radius: 10px;
+
+                &:hover {background-color: #3e8e41}
+
+                &:active {
+                background-color: #3e8e41;
+                box-shadow: 0 5px #666;
+                transform: translateY(4px);
+                }
             }
         }
     }

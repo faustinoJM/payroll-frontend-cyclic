@@ -36,9 +36,9 @@ const Profile = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>0</td>
+                                <td>joao</td>
+                                <td>joao@123.com</td>
                                 <td></td>
                             </tr>
                         </tbody>

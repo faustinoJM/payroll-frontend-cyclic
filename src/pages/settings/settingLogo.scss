@@ -19,7 +19,7 @@
                 li {
                     margin-right: 5px;
 
-                    a:active, a:visited, a:link{
+                    .a:active, .a:visited, .a:link{
                         // background-color: rgb(241, 241, 241);
                         border-top: 0.5px solid gray;
                         border-right: 0.5px solid gray;
@@ -31,6 +31,9 @@
                         text-decoration: none;
                         color: black;
                         padding: 5px;
+                    }
+                    .b {
+                        text-decoration: none;
                     }
                 }
 
@@ -71,7 +74,8 @@
                 width: 100%;
                 
                 div {
-                    width: 20%;
+                    min-width: 20%;
+                    margin-right: 10px;
                     // border: 1px solid blue;
                     display: flex;
                     label {

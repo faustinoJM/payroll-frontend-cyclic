@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useField } from '@unform/core';
 import "./input.scss"
 
-const Input = ({ name, label, outroErro,...props }) => {
+const Input = ({ name, label, loginError,...props }) => {
     const inputRef = useRef(null)
 
   
@@ -23,8 +23,8 @@ const Input = ({ name, label, outroErro,...props }) => {
             <label>{label}</label>
             <input ref={inputRef} {...props}/>
             {error && (<div className="error">{error}</div>)}
-            {/* {outroErro && (<div className="error">Email or Password incorrect</div>)} */}
-            {console.log(outroErro)}
+            {/* {loginError && (<div className="error">Email or Password incorrect</div>)} */}
+            {console.log(loginError)}
         </>
     )
 }
